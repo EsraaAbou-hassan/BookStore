@@ -1,0 +1,124 @@
+﻿@model BookStore.Models.Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using (Html.BeginForm("Edit", "Book", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h2>Edit</h2>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+<div class="form-group">
+    <div class="col-md-3">
+
+        <label class="control-label">Name</label>
+    </div>
+
+    <div class="col-md-9">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-3">
+        <label class="control-label">Image</label>
+    </div>
+
+    <div class="col-md-9">
+       
+        
+
+            <input class="form-control" type="file" name="Image" />
+            @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+        
+
+
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-3">
+        <label class="control-label">Description</label>
+    </div>
+    <div class="col-md-9">
+        @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-3">
+        <label class="control-label">Price</label>
+    </div>
+    <div class="col-md-9">
+        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-3">
+        <label class="control-label">ISBN</label>
+    </div>
+    <div class="col-md-9">
+        @Html.EditorFor(model => model.ISBN, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.ISBN, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label class="control-label">Author</label>
+        </div>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Author, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label class="control-label">Year_of_publication</label>
+        </div>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Year_of_publication, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Year_of_publication, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            <label class="control-label">Publishing</label>
+        </div>
+        <div class="col-md-9">
+            @Html.EditorFor(model => model.Publishing, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Publishing, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2 text-center">
+            <button type="submit" class="btn btn-info" id="save">Save</button>
+
+        </div>
+        <div class="col-md-2 text-center">
+            @Html.ActionLink("Back to List ", "Index", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
